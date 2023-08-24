@@ -58,12 +58,18 @@ export const AppReducer = (state, action) => {
                 budget
             };
         case 'SET_BUDGET':
+            state.budget = action.payload
             action.type = "DONE";
-            state.budget = action.payload;
-
             return {
                 ...state,
+                budget:action.payload
             };
+            // action.type = "DONE";
+            // state.budget = action.payload;
+
+            // return {
+            //     ...state,
+            // };
         case 'CHG_CURRENCY':
             action.type = "DONE";
             state.currency = action.payload;
@@ -111,6 +117,7 @@ export const AppProvider = (props) => {
             value={{
                 expenses: state.expenses,
                 budget: state.budget,
+                currency:state.currency,
                 remaining: remaining,
                 dispatch,
                 currency: state.currency
